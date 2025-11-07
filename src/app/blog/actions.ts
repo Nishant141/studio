@@ -2,8 +2,8 @@
 
 import { revalidatePath } from "next/cache";
 import { generateArticle as generateArticleFlow } from "@/ai/flows/ai-article-generator";
+import { generateImage as generateImageFlow } from "@/ai/flows/generate-image-flow";
 import { addArticle } from "@/lib/articles";
-import { placeholderImages } from "@/lib/placeholder-images.json";
 
 export async function generateArticlesAction(formData: FormData) {
   const titlesInput = formData.get("titles") as string;
@@ -17,19 +17,21 @@ export async function generateArticlesAction(formData: FormData) {
 
   try {
     for (const title of titles) {
-      const { content } = await generateArticleFlow({ title, notes });
+      // Generate article and image in parallel
+      const [articleResult, imageResult] = await Promise.all([
+        generateArticleFlow({ title, notes }),
+        generateImageFlow({ prompt: title })
+      ]);
       
-      const randomImage = placeholderImages[Math.floor(Math.random() * placeholderImages.length)] || {
-        imageUrl: "https://picsum.photos/seed/default/1200/630",
-        imageHint: "tech abstract"
-      };
+      const { content } = articleResult;
+      const { imageUrl, revisedPrompt } = imageResult;
 
       await addArticle({ 
         title, 
         notes, 
         content,
-        imageUrl: randomImage.imageUrl,
-        imageHint: randomImage.imageHint,
+        imageUrl: imageUrl,
+        imageHint: revisedPrompt,
        });
     }
 
