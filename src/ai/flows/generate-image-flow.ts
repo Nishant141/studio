@@ -32,7 +32,7 @@ const generateImageFlow = ai.defineFlow(
     outputSchema: GenerateImageOutputSchema,
   },
   async (input) => {
-    const { media, usage } = await ai.generate({
+    const { media } = await ai.generate({
       model: 'googleai/imagen-4.0-fast-generate-001',
       prompt: `Generate a visually appealing blog post header image for an article titled: "${input.prompt}". The image should be professional, engaging, and directly relevant to the topic. Avoid text.`,
       config: {
@@ -40,15 +40,13 @@ const generateImageFlow = ai.defineFlow(
       },
     });
 
-    const revisedPrompt = (usage?.custom?.['prompt.rewrittenPrompt'] as string) || input.prompt;
-
     if (!media.url) {
       throw new Error('Image generation failed to return a URL.');
     }
 
     return {
       imageUrl: media.url,
-      revisedPrompt,
+      revisedPrompt: input.prompt, // Use the original prompt as a stable fallback
     };
   }
 );
