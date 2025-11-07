@@ -3,8 +3,8 @@
 
 import { revalidatePath } from "next/cache";
 import { generateArticle as generateArticleFlow } from "@/ai/flows/ai-article-generator";
-import { generateImage as generateImageFlow } from "@/ai/flows/generate-image-flow";
 import { addArticle } from "@/lib/articles";
+import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 export async function generateArticlesAction(formData: FormData) {
   const titlesInput = formData.get("titles") as string;
@@ -18,21 +18,16 @@ export async function generateArticlesAction(formData: FormData) {
 
   try {
     for (const title of titles) {
-      // Generate article and image in parallel to save time
-      const [articleResult, imageResult] = await Promise.all([
-        generateArticleFlow({ title, notes }),
-        generateImageFlow({ prompt: title }),
-      ]);
+      const { content } = await generateArticleFlow({ title, notes });
       
-      const { content } = articleResult;
-      const { imageUrl, imageHint } = imageResult;
+      const randomImage = PlaceHolderImages[Math.floor(Math.random() * PlaceHolderImages.length)];
 
       await addArticle({ 
         title, 
         notes, 
         content,
-        imageUrl,
-        imageHint,
+        imageUrl: randomImage.imageUrl,
+        imageHint: randomImage.imageHint,
        });
     }
 
