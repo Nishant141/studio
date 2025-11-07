@@ -1,3 +1,64 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "1",
+      "description": "Abstract code on a screen.",
+      "imageUrl": "https://images.unsplash.com/photo-1555680510-34daedadbdb1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxjb2RlJTIwYWJzdHJhY3R8ZW58MHx8fHwxNzYyNDYzMjcyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "code abstract"
+    },
+    {
+      "id": "2",
+      "description": "A person typing on a laptop.",
+      "imageUrl": "https://images.unsplash.com/photo-1499673610122-01c7122c5dcb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxsYXB0b3AlMjBjb2Rpbmd8ZW58MHx8fHwxNzYyNTE3NzYxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "laptop coding"
+    },
+    {
+      "id": "3",
+      "description": "Network servers in a data center.",
+      "imageUrl": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkYXRhJTIwY2VudGVyfGVufDB8fHx8MTc2MjQ4Nzc1Nnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "data center"
+    },
+    {
+      "id": "4",
+      "description": "A futuristic technology background.",
+      "imageUrl": "https://images.unsplash.com/photo-1627645835237-0743e52b991f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxmdXR1cmlzdGljJTIwdGVjaG5vbG9neXxlbnwwfHx8fDE3NjI1MTc3NjF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "futuristic technology"
+    },
+    {
+      "id": "5",
+      "description": "A diagram of a neural network.",
+      "imageUrl": "https://images.unsplash.com/photo-1644088379091-d574269d422f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxuZXVyYWwlMjBuZXR3b3JrfGVufDB8fHx8MTc2MjQ1MTg5OHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "neural network"
+    },
+    {
+      "id": "6",
+      "description": "A software development flowchart on a whiteboard.",
+      "imageUrl": "https://images.unsplash.com/photo-1570979612940-07e690c6d7b9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHx3aGl0ZWJvYXJkJTIwZmxvd2NoYXJ0fGVufDB8fHx8MTc2MjUxNzc2MXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "whiteboard flowchart"
+    },
+    {
+      "id": "7",
+      "description": "Glowing circuit board lines.",
+      "imageUrl": "https://images.unsplash.com/photo-1651340550839-3b295d930048?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxjaXJjdWl0JTIwYm9hcmR8ZW58MHx8fHwxNzYyNTA5MjgxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "circuit board"
+    },
+    {
+      "id": "8",
+      "description": "An office with multiple computer monitors.",
+      "imageUrl": "https://images.unsplash.com/photo-1605379399843-5870eea9b74e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxjb21wdXRlciUyMG1vbml0b3JzfGVufDB8fHx8MTc2MjUxNzc2MXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "computer monitors"
+    },
+    {
+      "id": "9",
+      "description": "Close-up of source code.",
+      "imageUrl": "https://images.unsplash.com/photo-1594729095022-e2f6d2eece9c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxzb3VyY2UlMjBjb2RlfGVufDB8fHx8MTc2MjUxNzc2MXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "source code"
+    },
+    {
+      "id": "10",
+      "description": "An abstract representation of data.",
+      "imageUrl": "https://images.unsplash.com/photo-1626908013351-800ddd734b8a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxhYnN0cmFjdCUyMGRhdGF8ZW58MHx8fHwxNzYyNDY2NzIzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "abstract data"
+    }
+  ]
 }
