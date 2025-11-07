@@ -85,16 +85,16 @@ const AutodialerPage = () => {
 
       // Simulate call outcome
       const randomOutcome = Math.random();
-      let status: CallLog["status"] = "Failed";
+      let status: CallLog["status"];
       let duration = 0;
 
-      if (randomOutcome < 0.6) {
+      if (randomOutcome < 0.6) { // 60% chance of being answered
         status = "Answered";
         duration = 10 + Math.floor(Math.random() * 110); // 10s to 2min
-      } else if (randomOutcome < 0.85) {
+      } else if (randomOutcome < 0.85) { // 25% chance of going to voicemail
         status = "Voicemail";
         duration = 5 + Math.floor(Math.random() * 25); // 5s to 30s
-      } else {
+      } else { // 15% chance of failing
         status = "Failed";
       }
 
@@ -219,5 +219,3 @@ const AutodialerPage = () => {
 }
 
 export default AutodialerPage;
-
-    
