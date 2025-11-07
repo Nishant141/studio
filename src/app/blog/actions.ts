@@ -1,9 +1,10 @@
+
 "use server";
 
 import { revalidatePath } from "next/cache";
 import { generateArticle as generateArticleFlow } from "@/ai/flows/ai-article-generator";
-import { generateImage as generateImageFlow } from "@/ai/flows/generate-image-flow";
 import { addArticle } from "@/lib/articles";
+import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 export async function generateArticlesAction(formData: FormData) {
   const titlesInput = formData.get("titles") as string;
@@ -17,21 +18,17 @@ export async function generateArticlesAction(formData: FormData) {
 
   try {
     for (const title of titles) {
-      // Generate article and image in parallel
-      const [articleResult, imageResult] = await Promise.all([
-        generateArticleFlow({ title, notes }),
-        generateImageFlow({ prompt: title })
-      ]);
+      const { content } = await generateArticleFlow({ title, notes });
       
-      const { content } = articleResult;
-      const { imageUrl, revisedPrompt } = imageResult;
+      // Select a random placeholder image
+      const randomImage = PlaceHolderImages[Math.floor(Math.random() * PlaceHolderImages.length)];
 
       await addArticle({ 
         title, 
         notes, 
         content,
-        imageUrl: imageUrl,
-        imageHint: revisedPrompt,
+        imageUrl: randomImage.imageUrl,
+        imageHint: randomImage.imageHint,
        });
     }
 
