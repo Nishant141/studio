@@ -35,7 +35,12 @@ const prompt = ai.definePrompt({
   prompt: `You are an expert blog content creator.
 
   Based on the title and any provided notes, generate a well-structured and engaging blog article.
-  Include appropriate headings and sections to enhance readability.
+  
+  Use markdown for formatting:
+  - Use '#' for the main title.
+  - Use '##' for section headings.
+  - Use '###' for sub-headings.
+  - Separate paragraphs with a single newline.
 
   Title: {{{title}}}
   Notes: {{{notes}}}

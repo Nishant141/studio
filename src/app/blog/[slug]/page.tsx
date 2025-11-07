@@ -27,7 +27,7 @@ function MarkdownRenderer({ content }: { content: string }) {
         if (paragraph.startsWith('# ')) {
             return <h1 key={index} className="font-headline text-3xl font-bold mt-10 mb-6 border-b pb-4">{paragraph.substring(2)}</h1>
         }
-        return <p key={index} className="leading-relaxed">{paragraph}</p>;
+        return <p key={index} className="leading-relaxed mb-4">{paragraph}</p>;
       })}
     </div>
   );
