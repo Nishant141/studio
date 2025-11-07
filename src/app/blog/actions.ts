@@ -3,8 +3,8 @@
 
 import { revalidatePath } from "next/cache";
 import { generateArticle as generateArticleFlow } from "@/ai/flows/ai-article-generator";
+import { generateImage as generateImageFlow } from "@/ai/flows/generate-image-flow";
 import { addArticle } from "@/lib/articles";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 export async function generateArticlesAction(formData: FormData) {
   const titlesInput = formData.get("titles") as string;
@@ -18,17 +18,21 @@ export async function generateArticlesAction(formData: FormData) {
 
   try {
     for (const title of titles) {
-      const { content } = await generateArticleFlow({ title, notes });
+      // Generate article and image in parallel to save time
+      const [articleResult, imageResult] = await Promise.all([
+        generateArticleFlow({ title, notes }),
+        generateImageFlow({ prompt: title }),
+      ]);
       
-      // Select a random placeholder image
-      const randomImage = PlaceHolderImages[Math.floor(Math.random() * PlaceHolderImages.length)];
+      const { content } = articleResult;
+      const { imageUrl, imageHint } = imageResult;
 
       await addArticle({ 
         title, 
         notes, 
         content,
-        imageUrl: randomImage.imageUrl,
-        imageHint: randomImage.imageHint,
+        imageUrl,
+        imageHint,
        });
     }
 
@@ -36,6 +40,7 @@ export async function generateArticlesAction(formData: FormData) {
     return { success: `${titles.length} article(s) generated successfully.` };
   } catch (error) {
     console.error(error);
-    return { error: "Failed to generate articles." };
+    const errorMessage = error instanceof Error ? error.message : "An unknown error occurred.";
+    return { error: `Failed to generate articles: ${errorMessage}` };
   }
 }
