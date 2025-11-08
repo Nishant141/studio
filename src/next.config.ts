@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
   experimental: {
     serverActions: {
       allowedOrigins: [
-        '*.github.dev', // Allow requests from any github.dev domain
+        '*.app.github.dev',
       ],
     },
   },
