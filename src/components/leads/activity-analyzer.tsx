@@ -8,6 +8,7 @@ import { Loader2, AlertTriangle, Lightbulb, History } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Separator } from '@/components/ui/separator';
+import { format } from 'date-fns';
 
 export function ActivityAnalyzer({ lead }: { lead: Lead }) {
   const [isLoading, setIsLoading] = useState(false);
@@ -57,7 +58,7 @@ export function ActivityAnalyzer({ lead }: { lead: Lead }) {
                     <div key={activity.id} className="text-sm">
                     <p className="font-medium">{activity.action}</p>
                     <p className="text-xs text-muted-foreground">
-                        {new Date(activity.timestamp).toLocaleString()}
+                        {format(new Date(activity.timestamp), 'PPpp')}
                     </p>
                     </div>
                 ))}

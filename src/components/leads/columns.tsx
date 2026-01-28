@@ -16,6 +16,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { cn } from '@/lib/utils';
 import { ActivityAnalyzerButton } from './activity-analyzer-button';
+import { format } from 'date-fns';
 
 const statusColors: Record<LeadStatus, string> = {
     New: 'bg-blue-100 text-blue-800 border-blue-200',
@@ -91,7 +92,7 @@ export const columns: ColumnDef<Lead>[] = [
       },
     cell: ({ row }) => {
         const date = new Date(row.getValue('createdAt'));
-        return <div>{date.toLocaleDateString()}</div>
+        return <div>{format(date, 'MM/dd/yyyy')}</div>
     }
   },
   {
