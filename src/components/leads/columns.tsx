@@ -109,9 +109,6 @@ export const columns: ColumnDef<Lead>[] = [
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <DropdownMenuItem onClick={() => navigator.clipboard.writeText(lead.id)}>
-              Copy lead ID
-            </DropdownMenuItem>
             <DropdownMenuSeparator />
             <ActivityAnalyzerButton lead={lead} />
             <DropdownMenuItem>View details</DropdownMenuItem>
