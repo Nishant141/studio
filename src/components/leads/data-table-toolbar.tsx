@@ -84,6 +84,20 @@ export function DataTableToolbar<TData>({
                     {industry}
                 </DropdownMenuCheckboxItem>
              ))}
+             <DropdownMenuSeparator />
+             <DropdownMenuLabel className="text-xs font-normal">Region</DropdownMenuLabel>
+              {filters.regions.map(region => (
+                <DropdownMenuCheckboxItem
+                    key={region}
+                    checked={regionColumn?.getFilterValue() === region}
+                    onCheckedChange={(value) => {
+                        if (value) regionColumn?.setFilterValue(region);
+                        else regionColumn?.setFilterValue(undefined);
+                    }}
+                >
+                    {region}
+                </DropdownMenuCheckboxItem>
+             ))}
           </DropdownMenuContent>
         </DropdownMenu>
 

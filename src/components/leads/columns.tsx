@@ -16,7 +16,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { cn } from '@/lib/utils';
 import { ActivityAnalyzerButton } from './activity-analyzer-button';
-import { format } from 'date-fns';
+import { format, addMinutes } from 'date-fns';
 
 const statusColors: Record<LeadStatus, string> = {
     New: 'bg-blue-100 text-blue-800 border-blue-200',
@@ -63,6 +63,20 @@ export const columns: ColumnDef<Lead>[] = [
     header: 'Company',
   },
   {
+    accessorKey: 'industry',
+    header: 'Industry',
+    filterFn: (row, id, value) => {
+        return value.includes(row.getValue(id))
+    },
+  },
+  {
+    accessorKey: 'region',
+    header: 'Region',
+    filterFn: (row, id, value) => {
+        return value.includes(row.getValue(id))
+    },
+  },
+  {
     accessorKey: 'status',
     header: 'Status',
     cell: ({ row }) => {
@@ -92,7 +106,8 @@ export const columns: ColumnDef<Lead>[] = [
       },
     cell: ({ row }) => {
         const date = new Date(row.getValue('createdAt'));
-        return <div>{format(date, 'MM/dd/yyyy')}</div>
+        const utcDate = addMinutes(date, date.getTimezoneOffset());
+        return <div>{format(utcDate, 'MM/dd/yyyy')}</div>
     }
   },
   {
